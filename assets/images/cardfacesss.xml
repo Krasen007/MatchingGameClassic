@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="cardfacesss.png">
+
+    <SubTexture name="2h" x="0" y="0" width="81" height="81" />
+    <SubTexture name="3h" x="81" y="0" width="81" height="81" />
+    <SubTexture name="4h" x="162" y="0" width="81" height="81" />
+    <SubTexture name="5h" x="243" y="0" width="81" height="81" />
+    <SubTexture name="6h" x="324" y="0" width="81" height="81" />
+    <SubTexture name="7h" x="405" y="0" width="81" height="81" />
+    <SubTexture name="8h" x="486" y="0" width="81" height="81" />
+    <SubTexture name="9h" x="567" y="0" width="81" height="81" />
+    <SubTexture name="Th" x="648" y="0" width="81" height="81" />
+    <SubTexture name="Jh" x="729" y="0" width="81" height="81" />
+    <SubTexture name="Qh" x="810" y="0" width="81" height="81" />
+    <SubTexture name="Kh" x="891" y="0" width="81" height="81" />
+    <SubTexture name="Ah" x="972" y="0" width="81" height="81" />
+
+    <SubTexture name="2d" x="0" y="117.4" width="81" height="81" />
+    <SubTexture name="3d" x="81" y="117.4" width="81" height="81" />
+    <SubTexture name="4d" x="162" y="117.4" width="81" height="81" />
+    <SubTexture name="5d" x="243" y="117.4" width="81" height="81" />
+    <SubTexture name="6d" x="324" y="117.4" width="81" height="81" />
+    <SubTexture name="7d" x="405" y="117.4" width="81" height="81" />
+    <SubTexture name="8d" x="486" y="117.4" width="81" height="81" />
+    <SubTexture name="9d" x="567" y="117.4" width="81" height="81" />
+    <SubTexture name="Td" x="648" y="117.4" width="81" height="81" />
+    <SubTexture name="Jd" x="729" y="117.4" width="81" height="81" />
+    <SubTexture name="Qd" x="810" y="117.4" width="81" height="81" />
+    <SubTexture name="Kd" x="891" y="117.4" width="81" height="81" />
+    <SubTexture name="Ad" x="972" y="117.4" width="81" height="81" />
+
+    <SubTexture name="2c" x="0" y="234.8" width="81" height="81" />
+    <SubTexture name="3c" x="81" y="234.8" width="81" height="81" />
+    <SubTexture name="4c" x="162" y="234.8" width="81" height="81" />
+    <SubTexture name="5c" x="243" y="234.8" width="81" height="81" />
+    <SubTexture name="6c" x="324" y="234.8" width="81" height="81" />
+    <SubTexture name="7c" x="405" y="234.8" width="81" height="81" />
+    <SubTexture name="8c" x="486" y="234.8" width="81" height="81" />
+    <SubTexture name="9c" x="567" y="234.8" width="81" height="81" />
+    <SubTexture name="Tc" x="648" y="234.8" width="81" height="81" />
+    <SubTexture name="Jc" x="729" y="234.8" width="81" height="81" />
+    <SubTexture name="Qc" x="810" y="234.8" width="81" height="81" />
+    <SubTexture name="Kc" x="891" y="234.8" width="81" height="81" />
+    <SubTexture name="Ac" x="972" y="234.8" width="81" height="81" />
+
+    <SubTexture name="2s" x="0" y="352.2" width="81" height="81" />
+    <SubTexture name="3s" x="81" y="352.2" width="81" height="81" />
+    <SubTexture name="4s" x="162" y="352.2" width="81" height="81" />
+    <SubTexture name="5s" x="243" y="352.2" width="81" height="81" />
+    <SubTexture name="6s" x="324" y="352.2" width="81" height="81" />
+    <SubTexture name="7s" x="405" y="352.2" width="81" height="81" />
+    <SubTexture name="8s" x="486" y="352.2" width="81" height="81" />
+    <SubTexture name="9s" x="567" y="352.2" width="81" height="81" />
+    <SubTexture name="Ts" x="648" y="352.2" width="81" height="81" />
+    <SubTexture name="Js" x="729" y="352.2" width="81" height="81" />
+    <SubTexture name="Qs" x="810" y="352.2" width="81" height="81" />
+    <SubTexture name="Ks" x="891" y="352.2" width="81" height="81" />
+    <SubTexture name="As" x="972" y="352.2" width="81" height="81" />
+
+    <SubTexture name="closedCard" x="0" y="469.6" width="81" height="81" />
+    <SubTexture name="joker" x="81" y="469.6" width="81" height="81" />
+</TextureAtlas>
