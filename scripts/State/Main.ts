@@ -1,3 +1,11 @@
+/*
+ *
+ * Created by Krasen Ivanov 2015
+ * Thanks to Ivailo Dimitrov for the project guidance.
+ *
+ *
+*/
+
 /// <reference path="../../vendor/phaser-official/typescript/phaser.d.ts"/>
 /// <reference path="../Classes/ReturnRandomCard.ts"/>
 /// <reference path="../Classes/Initialization.ts"/>
@@ -31,8 +39,6 @@ module MatchingPairs.State {
 
         private loadingSounds: Phaser.Sound;
 
-        // TODO Sounds on click, particles, at corners in tile emits, localStorage, phaserlocalstorage,
-
         create(): void {
             this.stage.backgroundColor = 0xCCFF66;
 
@@ -46,7 +52,6 @@ module MatchingPairs.State {
         }
 
         private drawText(): void {
-            //this.game.add.text(250, 250, "X", this.style);
             this.scoreTxt = this.game.add.text(10, 1, "Score: " + Initialization.userScore, this.style); // 50, 1 , this.game.world.width
             this.movesTxt = this.game.add.text((this.game.world.width - 60) / 2, 1, "Moves: " + Initialization.MOVES, this.style); //215
             this.levelTxt = this.game.add.text(this.game.world.width - 80, 1, "Level: " + Initialization.LEVEL, this.style); // 355
@@ -88,15 +93,14 @@ module MatchingPairs.State {
                     - (leveledAndScaledTile + ((leveledAndScaledTile / Initialization.LEVEL) * (Initialization.LEVEL - 1))));
                 gameTile.y = (this.game.world.centerY + (row * (levelTileScaling * Initialization.REAL_CARD_SIZE))
                     - (leveledAndScaledTile + ((leveledAndScaledTile / Initialization.LEVEL) * (Initialization.LEVEL - 1))));
-                
+
                 gameTile.tileClickSignal.add(this.onTileClicked, this);
                 gameTile.tileDestroySignal.add(this.destroyAtTheSameTime, this);
-                console.log(row, col, gameTile.uniqueId, gameTile.tileFaceId);
+                //console.log(row, col, gameTile.uniqueId, gameTile.tileFaceId);
                 this.tileGraphics.push(gameTile);
                 Initialization.cardCounter++;
             }
-            //console.log("*** the board is spawned");
-        }        
+        }
 
         private static findById(tileArray: Tile[], id: string): Tile {
             for (var i: number = 0; i < tileArray.length; i++) {
@@ -111,18 +115,18 @@ module MatchingPairs.State {
         private onTileClicked(unId: string) {
             var currentTile: Tile = Main.findById(this.tileGraphics, unId);
 
-            if (this.firstClickedTile == null) { // TODO for all
+            if (this.firstClickedTile == null) {
                 this.firstClickedTile = currentTile;
                 this.firstClickedTile.startFlip();
                 this.firstClickedTile.particlesOpen();
                 Main.firstTileOpen = true;
-                console.log("First clicked card ", this.firstClickedTile.uniqueId, this.firstClickedTile.tileFaceId);
+                //console.log("First clicked card ", this.firstClickedTile.uniqueId, this.firstClickedTile.tileFaceId);
                 Initialization.MOVES++;
                 this.startCountdown(5);
             } else {
                 if (this.firstClickedTile.uniqueId == currentTile.uniqueId) {
                     if (this.secondClickedTile != null) {
-                        console.log("Keeping it First and closing the other tile! ");
+                        //console.log("Keeping it First and closing the other tile! ");
                         try {
                             this.secondClickedTile.startFlip();
                             this.secondClickedTile.particlesClose();
@@ -136,7 +140,7 @@ module MatchingPairs.State {
                         Main.secondTileOpen = false;
                         this.startCountdown(5);
                     } else {
-                        console.log("Same tile clicked! Closing. ");
+                        //console.log("Same tile clicked! Closing. ");
                         try {
                             this.firstClickedTile.startFlip();
                             this.firstClickedTile.particlesClose();
@@ -158,7 +162,7 @@ module MatchingPairs.State {
                             console.log(error.name, error.message);
                         }
                         Main.secondTileOpen = true;
-                        console.log("Second clicked card ", this.secondClickedTile.uniqueId, this.secondClickedTile.tileFaceId);
+                        //console.log("Second clicked card ", this.secondClickedTile.uniqueId, this.secondClickedTile.tileFaceId);
                         Initialization.MOVES++;
                         if ((this.firstClickedTile.tileFaceId == this.secondClickedTile.tileFaceId) && (this.firstClickedTile.uniqueId != this.secondClickedTile.uniqueId)) {
                             this.destroyTiles();
@@ -171,7 +175,7 @@ module MatchingPairs.State {
                     } else {
                         if ((currentTile.uniqueId != this.firstClickedTile.uniqueId) && (currentTile.uniqueId != this.secondClickedTile.uniqueId)) {
                             //other clicked
-                            console.log("Other card!, making it First!", this.firstClickedTile.uniqueId, this.firstClickedTile.tileFaceId);
+                            //console.log("Other card!, making it First!", this.firstClickedTile.uniqueId, this.firstClickedTile.tileFaceId);
                             try {
                                 this.firstClickedTile.startFlip();
                                 this.firstClickedTile.particlesClose();
@@ -198,12 +202,11 @@ module MatchingPairs.State {
                             Main.firstTileOpen = true;
                             this.startCountdown(5);
                         } else {
-                            console.log("We are making the Second Tile - first and closing the other tile");
+                            //console.log("We are making the Second Tile - first and closing the other tile");
                             if (this.firstClickedTile != null) {
                                 try {
                                     this.firstClickedTile.startFlip();
                                     this.firstClickedTile.particlesClose();
-
                                 } catch (error) {
                                     console.log(error.name, error.message);
                                 }
@@ -214,7 +217,7 @@ module MatchingPairs.State {
                                 Main.firstTileOpen = true;
                                 this.startCountdown(5);
                             } else {
-                                console.log("firstClickedTile is = null", this.firstClickedTile);
+                                //console.log("firstClickedTile is = null", this.firstClickedTile);
                             }
                         }
                     }
@@ -245,7 +248,7 @@ module MatchingPairs.State {
 
                     Main.firstTileOpen = false;
                     Main.secondTileOpen = false;
-                    console.log("you matched the last cards!");
+                    //console.log("you matched the last cards!");
                     this.levelCompleteCountdown(1);
                 } else {
                     Initialization.cardCounter -= 2;
@@ -255,6 +258,8 @@ module MatchingPairs.State {
                     //} catch (error) {
                     //    console.log(error.name, error.message);
                     //}
+
+                    // this also calls destroyAtTheSameTime() and destroys the first tile which was already open, above is the old code.
                     try {
                         this.secondClickedTile.closeTileAndDestroy();
                     } catch (error) {
@@ -264,10 +269,10 @@ module MatchingPairs.State {
 
                     Main.firstTileOpen = false;
                     Main.secondTileOpen = false;
-                    console.log("you matched 2 cards!!!");
+                    //console.log("you matched 2 cards!!!");
                 }
             } else {
-                console.log("no match");
+                //console.log("no match");
             }
             this.tileCountDownTimer.stop(true);
             this.ctDwnTxt.setText("Countdown: --");
@@ -323,18 +328,18 @@ module MatchingPairs.State {
             this.cardsTxt.setText("Cards: " + Initialization.cardCounter);
 
             //hack
-            if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-                this.firstClickedTile = null;
-                this.secondClickedTile = null;
-                this.levelComplete();
-            }
+            //if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+            //    this.firstClickedTile = null;
+            //    this.secondClickedTile = null;
+            //    this.levelComplete();
+            //}
         }
 
-        render(): void {
-            this.game.debug.text(this.game.time.fps + ' fps', 129, 14);
-            this.game.debug.text("first click " + this.firstClickedTile + " Second clicked " + this.secondClickedTile, 0, 450);
-            this.game.debug.text("first tile open " + Main.firstTileOpen + " second tile open " + Main.secondTileOpen, 0, 460);
-        }
+        //render(): void {
+        //    this.game.debug.text(this.game.time.fps + ' fps', 129, 14);
+        //    this.game.debug.text("first click " + this.firstClickedTile + " Second clicked " + this.secondClickedTile, 0, 450);
+        //    this.game.debug.text("first tile open " + Main.firstTileOpen + " second tile open " + Main.secondTileOpen, 0, 460);
+        //}
 
         private updateTimer(): void {
             var minutes: number = Math.floor(this.game.time.now / Phaser.Timer.MINUTE) % 60;
@@ -348,11 +353,10 @@ module MatchingPairs.State {
         }
 
         private levelComplete(): void {
-            console.log("LEVEL COMPLETE");
+            //console.log("LEVEL COMPLETE");
             this.game.stage.backgroundColor = 0xCCFFCC;
             Initialization.cardCounter = 0;
             this.loadingSounds.play();
-            //this.loadingSounds.fadeIn(500, false, '');
 
             if (Initialization.LEVEL == 5) {
                 this.game.state.start("menu");

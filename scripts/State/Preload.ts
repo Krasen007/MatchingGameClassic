@@ -1,3 +1,7 @@
+/**
+ * Created by Krasen Ivanov.
+ */
+
 /// <reference path="../../vendor/phaser-official/typescript/phaser.d.ts"/>
 
 module MatchingPairs.State {

@@ -1,5 +1,5 @@
 /**
- * Created by krasen on 15-8-12.
+ * Created by Krasen Ivanov on 15-8-12.
  */
 
 /// <reference path="../../vendor/phaser-official/typescript/phaser.d.ts"/>
@@ -60,12 +60,9 @@ module MatchingPairs.State {
 
             this.tileOpenFX = this.game.add.audio("tileOpenFX");
             this.tileDestroyFX = this.game.add.audio("tileDestroyFX");
-            //this.tileOpenFX.fadeOut(300);
 
             this.emitter.setXSpeed(-20, -30);
             this.emitter.setYSpeed(-20, -30);
-
-            //this.emitter.gravity = 300;
         }
 
         public particlesOpen() {
@@ -133,20 +130,16 @@ module MatchingPairs.State {
             if (this.isAnimating == false) {
                 this.tileClickSignal.dispatch(this.uniqueId);
             } else {
-                console.log("Its animating something...");
+                //console.log("Its animating something...");
             }
         }
 
         // Main.ts Destroy click methods
         public closeTileAndDestroy(): void {
             this.isAnimating = true;
-            //if (this.currentState == TileState.CLOSED) {
-            //    this.continueTileFlipAndDestroy();
-            //} else {
             this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
             this.flipTween.onComplete.add(this.onCompleteTileFlip1, this);
             this.flipTween.start();
-            // }
         }
         private onCompleteTileFlip1(): void {
             if (this.currentState == TileState.OPEN) {
@@ -178,16 +171,10 @@ module MatchingPairs.State {
         // Tile.ts click methods
         public startFlip(): void {
             this.tileOpenFX.play();
-
-            //this.particleFX();
-
-            //if ((this.currentState == 0) && (this.isAnimating == false)) {
             this.isAnimating = true;
             this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
             this.flipTween.onComplete.add(this.onCompleteFlip1, this);
             this.flipTween.start();
-            //console.log(this.currentState, "state closed");
-            //}
         }
         private onCompleteFlip1(): void {
             if (this.currentState == TileState.OPEN) {
@@ -209,9 +196,7 @@ module MatchingPairs.State {
             } else {
                 this.currentState = TileState.OPEN;
             }
-            //this.particleStopper(0.5);
             this.isAnimating = false;
-            //console.log(this.currentState, "state open");
         }
 
         private particleStopper(stopInSeconds: number): void {
@@ -223,21 +208,6 @@ module MatchingPairs.State {
             this.emitter.kill();
         }
 
-        public destroy() {
-            super.destroy();
-            ////TODO fix tween animation for opening and closing
-            //if (this.flipTween != null){
-            //    //this.flipTween.delay(3000);
-            //    //this.flipTween.onComplete.dispose();
-            //    this.flipTween.stop();
-            //}
-            //var tileFlipTween:Phaser.Tween;
-            //tileFlipTween = this.game.add.tween(this.face.scale).to({x: 0, y: 0}, 300, Phaser.Easing.Quartic.In);
-            //tileFlipTween.onComplete.add(this.face.destroy,this);
-            //tileFlipTween.start();
-            ////this.face = new Phaser.Sprite(this.game, 0, 0, "cardfaces", "closedCard");
-        }
-
         public tileDestroy() {
             if (!this.tileDestroyFX.isPlaying) {
                 this.tileDestroyFX.play();
@@ -246,7 +216,6 @@ module MatchingPairs.State {
             this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0, y: 0 }, 300, Phaser.Easing.Quartic.In);
             this.flipTween.onComplete.add(this.face.destroy, this);
             this.flipTween.start();
-            //this.face = new Phaser.Sprite(this.game, 0, 0, "cardfaces", "closedCard");
         }
     }
 }

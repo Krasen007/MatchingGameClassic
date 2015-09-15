@@ -1,5 +1,5 @@
 /**
- * Created by krasen on 15-8-12.
+ * Created by Krasen Ivanov on 15-8-12.
  */
 
 module MatchingPairs {
