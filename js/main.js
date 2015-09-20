@@ -22,7 +22,7 @@ var MatchingPairs;
             };
             Boot.prototype.create = function () {
                 // this is the best I managed to make it work for smartphones
-                this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+                this.game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
                 this.game.stage.backgroundColor = 0xFFFFFF;
                 // used for debug fps counter
                 //this.game.time.advancedTiming = true;
