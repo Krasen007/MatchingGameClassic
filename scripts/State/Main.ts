@@ -356,7 +356,9 @@ module MatchingPairs.State {
             //console.log("LEVEL COMPLETE");
             this.game.stage.backgroundColor = 0xCCFFCC;
             Initialization.cardCounter = 0;
-            this.loadingSounds.play();
+            if (!this.loadingSounds.isPlaying) {
+                this.loadingSounds.play();
+            }
 
             if (Initialization.LEVEL == 5) {
                 this.game.state.start("menu");

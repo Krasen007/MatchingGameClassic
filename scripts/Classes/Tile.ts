@@ -77,11 +77,8 @@ module MatchingPairs.State {
             tweenEmitter1.chain(tweenEmitter2);
             tweenEmitter2.chain(tweenEmitter3);
             tweenEmitter3.chain(tweenEmitter4);
-            //tweenEmitter4.chain(tweenEmitter1);
 
             tweenEmitter1.start();
-            //this.emitter.start(false, 10000, 1, 19, true); // 20
-            //this.emitter.start(false, -1, 100, 1);
             this.emitter.flow(200, -1, 1);
             this.particleStopper(0.450);
             //console.log(this.emitter);
@@ -120,9 +117,8 @@ module MatchingPairs.State {
 
         private onMouseOver(): void {
             this.face.tint = 0xCCFFCC;
-            //this.tweenAnim = this.game.add.tween(this.face)
-            //    .to({x:1},100,Phaser.Easing.Bounce.InOut,true,0,0,true);
         }
+
         private onMouseOut(): void {
             this.face.tint = 0xffffff;
         }
@@ -137,25 +133,27 @@ module MatchingPairs.State {
         // Main.ts Destroy click methods
         public closeTileAndDestroy(): void {
             this.isAnimating = true;
-            this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
-            this.flipTween.onComplete.add(this.onCompleteTileFlip1, this);
-            this.flipTween.start();
+            //this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
+            //this.flipTween.onComplete.add(this.onCompleteTileFlip1, this);
+            //this.flipTween.start();
+            this.onCompleteTileFlip1();
         }
         private onCompleteTileFlip1(): void {
-            if (this.currentState == TileState.OPEN) {
-                this.face.frameName = "closedCard";
-            }
-            else {
-                this.face.frameName = this._id;
-            }
+            //if (this.currentState == TileState.OPEN) {
+            //    this.face.frameName = "closedCard";
+            //}
+            //else {
+            this.face.frameName = this._id;
+            //}
             this.continueTileFlipAndDestroy();
             this.tileDestroySignal.dispatch();
         }
         public continueTileFlipAndDestroy(): void {
             this.isAnimating = true;
-            this.flipTween = this.game.add.tween(this.face.scale).to({ x: 1 }, 300, Phaser.Easing.Quartic.Out);
-            this.flipTween.onComplete.add(this.onCompleteTileFlip2, this);
-            this.flipTween.start();
+            //this.flipTween = this.game.add.tween(this.face.scale).to({ x: 1 }, 300, Phaser.Easing.Quartic.Out);
+            //this.flipTween.onComplete.add(this.onCompleteTileFlip2, this);
+            //this.flipTween.start();
+            this.onCompleteTileFlip2();
         }
         private onCompleteTileFlip2(): void {
             if (this.currentState == TileState.OPEN) {
@@ -170,11 +168,15 @@ module MatchingPairs.State {
 
         // Tile.ts click methods
         public startFlip(): void {
-            this.tileOpenFX.play();
+            if (!this.tileOpenFX.isPlaying) {
+                this.tileOpenFX.play();
+            }
+
             this.isAnimating = true;
-            this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
-            this.flipTween.onComplete.add(this.onCompleteFlip1, this);
-            this.flipTween.start();
+            //this.flipTween = this.game.add.tween(this.face.scale).to({ x: 0 }, 300, Phaser.Easing.Quartic.In);
+            //this.flipTween.onComplete.add(this.onCompleteFlip1, this);
+            //this.flipTween.start();
+            this.onCompleteFlip1();
         }
         private onCompleteFlip1(): void {
             if (this.currentState == TileState.OPEN) {
@@ -186,9 +188,10 @@ module MatchingPairs.State {
             this.continueFlip();
         }
         private continueFlip(): void {
-            this.flipTween = this.game.add.tween(this.face.scale).to({ x: 1 }, 300, Phaser.Easing.Quartic.Out);
-            this.flipTween.onComplete.add(this.onCompleteFlip2, this);
-            this.flipTween.start();
+            //this.flipTween = this.game.add.tween(this.face.scale).to({ x: 1 }, 300, Phaser.Easing.Quartic.Out);
+            //this.flipTween.onComplete.add(this.onCompleteFlip2, this);
+            //this.flipTween.start();
+            this.onCompleteFlip2();
         }
         private onCompleteFlip2(): void {
             if (this.currentState == TileState.OPEN) {

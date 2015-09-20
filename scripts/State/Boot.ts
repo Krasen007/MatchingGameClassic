@@ -10,9 +10,13 @@ module MatchingPairs.State {
             this.load.image('preload-bar', 'assets/images/preload-bar.png');
         }
         create() {
-            this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            // this is the best I managed to make it work for smartphones
+            this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+
             this.game.stage.backgroundColor = 0xFFFFFF;
-            this.game.time.advancedTiming = true;
+
+            // used for debug fps counter
+            //this.game.time.advancedTiming = true;
 
             this.game.state.start('preload');
         }
